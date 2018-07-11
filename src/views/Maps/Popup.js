@@ -6,7 +6,7 @@ const FeaturePopup = ({ feature }) => {
   if (feature) {
     return (
       <Popup coordinates={feature.coordinates}>
-        <h1>{feature.properties.message}</h1>
+        <h3>{feature.properties.desc}</h3>
       </Popup>
     );
   }

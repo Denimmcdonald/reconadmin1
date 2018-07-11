@@ -13,7 +13,7 @@ import {
 import Popup from '../Maps/Popup';
 import LayerSwitcher from './LayerSwitcher';
 import TimeFilter from './TimeFilter';
-import { FEATURE_CLICKED } from '../../constants/actionTypes';
+import { FEATURE_CLICKED, DATA_REQUEST } from '../../constants/actionTypes';
 
 const Map = ReactMapboxGl({
   accessToken:
@@ -26,6 +26,9 @@ class SamaritanMap extends React.Component {
     this.state = {
       mapReady: false
     };
+  }
+  componentDidMount() {
+    this.props.fetchData();
   }
 
   onStyleLoad = (c) => {
@@ -76,6 +79,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     clearPopup: () => {
       dispatch({ type: FEATURE_CLICKED });
+    },
+    fetchData: () => {
+      dispatch({ type: DATA_REQUEST });
     }
   };
 };

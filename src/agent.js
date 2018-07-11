@@ -1,7 +1,4 @@
 const agent = {
-  fetchData: () =>
-    fetch(
-      `https://erick-otenyo.carto.com/api/v2/sql?q=SELECT * from hospitals'&format=geojson`
-    )
+  fetchData: () => fetch(`${process.env.PUBLIC_URL}/api/tukios`)
 };
 export default agent;

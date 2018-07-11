@@ -11,6 +11,8 @@ import Maps from 'views/Maps/Maps.jsx';
 const dashboardRoutes = [
   {
     path: '/dashboard',
+    exact: true,
+    route: '/dashboard',
     sidebarName: 'Dashboard',
     navbarName: 'Samaritan Dashboard',
     icon: Dashboard,
@@ -18,6 +20,8 @@ const dashboardRoutes = [
   },
   {
     path: '/maps',
+    exact: true,
+    route: '/maps',
     sidebarName: 'Map',
     navbarName: 'Map',
     icon: LocationOn,
@@ -25,13 +29,13 @@ const dashboardRoutes = [
   },
   {
     path: '/user',
+    route: '/user',
+    exact: true,
     sidebarName: 'Settings',
     navbarName: 'Settings',
     icon: Settings,
     component: UserProfile
-  },
-
-  { redirect: true, path: '/', to: '/dashboard', navbarName: 'Redirect' }
+  }
 ];
 
 export default dashboardRoutes;
