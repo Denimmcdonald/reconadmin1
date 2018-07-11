@@ -26,15 +26,6 @@ const dashboardRoutes = [
     navbarName: 'Map',
     icon: LocationOn,
     component: Maps
-  },
-  {
-    path: '/user',
-    route: '/user',
-    exact: true,
-    sidebarName: 'Settings',
-    navbarName: 'Settings',
-    icon: Settings,
-    component: UserProfile
   }
 ];
 
