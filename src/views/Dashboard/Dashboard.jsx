@@ -32,7 +32,7 @@ import CardFooter from 'components/Card/CardFooter.jsx';
 
 // airship
 
-import { Widget, GaugeChart } from '@carto/airship';
+import { DonutChart } from '@carto/airship';
 
 import {
   dailySalesChart,
@@ -42,7 +42,8 @@ import {
 
 import dashboardStyle from 'assets/jss/material-dashboard-react/views/dashboardStyle.jsx';
 
-import { getFeatureCount } from '../../utils';
+import { getFeatureCount, getFeaturesSummary } from '../../utils';
+import { DATA_REQUEST } from '../../constants/actionTypes';
 
 class Dashboard extends React.Component {
   state = {
@@ -55,8 +56,15 @@ class Dashboard extends React.Component {
   handleChangeIndex = (index) => {
     this.setState({ value: index });
   };
+  componentDidMount() {
+    this.props.fetchData();
+  }
   render() {
     const { classes, data } = this.props;
+    let summary;
+    if (data.features.length) {
+      summary = getFeaturesSummary(data);
+    }
     return (
       <div>
         <Grid container>
@@ -66,16 +74,16 @@ class Dashboard extends React.Component {
                 <CardIcon color="warning">
                   <AlertNew />
                 </CardIcon>
-                <p className={classes.cardCategory}>Today</p>
+                <p className={classes.cardCategory}>Robbery </p>
                 <h3 className={classes.cardTitle}>
-                  {/* {getFeatureCount(data, 'today')} */}20
+                  {getFeatureCount(data, 'robbery')}
                 </h3>
               </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
                   <DateRange />
                   <a href="#" onClick={(e) => e.preventDefault()}>
-                    Crimes reported today
+                    Robberies reported
                   </a>
                 </div>
               </CardFooter>
@@ -85,17 +93,17 @@ class Dashboard extends React.Component {
             <Card>
               <CardHeader color="danger" stats icon>
                 <CardIcon color="danger">
-                  <Pending />
+                  <AlertNew />
                 </CardIcon>
-                <p className={classes.cardCategory}>Urgent Cases</p>
-                <h3 className={classes.cardTitle}>2</h3>
+                <p className={classes.cardCategory}>Vandalistn</p>
+                <h3 className={classes.cardTitle}>
+                  {getFeatureCount(data, 'vandalism')}
+                </h3>
               </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
-                  <Danger>
-                    <Warning />
-                  </Danger>
-                  Urgent Cases
+                  <DateRange />
+                  Vandalism Cases
                 </div>
               </CardFooter>
             </Card>
@@ -103,16 +111,17 @@ class Dashboard extends React.Component {
           <GridItem xs={12} sm={6} md={3}>
             <Card>
               <CardHeader color="danger" stats icon>
-                <CardIcon color="success">
-                  <CheckCircle />
+                <CardIcon color="danger">
+                  <AlertNew />
                 </CardIcon>
-                <p className={classes.cardCategory}>Attended Cases</p>
-                <h3 className={classes.cardTitle}>8</h3>
+                <p className={classes.cardCategory}>Burglary</p>
+                <h3 className={classes.cardTitle}>
+                  {getFeatureCount(data, 'burglary')}
+                </h3>
               </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
-                  <LocalOffer />
-                  Cases attended to Today
+                  <DateRange /> Burglary Cases
                 </div>
               </CardFooter>
             </Card>
@@ -120,16 +129,37 @@ class Dashboard extends React.Component {
           <GridItem xs={12} sm={6} md={3}>
             <Card>
               <CardHeader color="info" stats icon>
-                <CardIcon color="info">
-                  <Alert />
+                <CardIcon color="danger">
+                  <AlertNew />
                 </CardIcon>
-                <p className={classes.cardCategory}>Pending Cases</p>
-                <h3 className={classes.cardTitle}>5</h3>
+                <p className={classes.cardCategory}>Drug Use </p>
+                <h3 className={classes.cardTitle}>
+                  {getFeatureCount(data, 'drugUse')}
+                </h3>
               </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
-                  <Update />
-                  Just Updated
+                  <DateRange />
+                  Drug Use Cases
+                </div>
+              </CardFooter>
+            </Card>
+          </GridItem>
+          <GridItem xs={12} sm={6} md={3}>
+            <Card>
+              <CardHeader color="info" stats icon>
+                <CardIcon color="danger">
+                  <AlertNew />
+                </CardIcon>
+                <p className={classes.cardCategory}>Corruption </p>
+                <h3 className={classes.cardTitle}>
+                  {getFeatureCount(data, 'corruption')}
+                </h3>
+              </CardHeader>
+              <CardFooter stats>
+                <div className={classes.stats}>
+                  <DateRange />
+                  Corruption Cases
                 </div>
               </CardFooter>
             </Card>
@@ -163,11 +193,11 @@ class Dashboard extends React.Component {
           <GridItem xs={12} sm={12} md={4}>
             <Card chart>
               <CardHeader>
-                <GaugeChart value={33} label="Percernt %" />
+                <DonutChart data={summary} />
               </CardHeader>
               <CardBody>
-                <h4 className={classes.cardTitle}>Resolved</h4>
-                <p className={classes.cardCategory}>Cases resolved Today</p>
+                <h4 className={classes.cardTitle}>Case Distribution</h4>
+                {/* <p className={classes.cardCategory}>Cases Reported</p> */}
               </CardBody>
               <CardFooter chart>
                 <div className={classes.stats}>
@@ -216,6 +246,17 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const withConnect = connect(mapStateToProps)(Dashboard);
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    fetchData: () => {
+      dispatch({ type: DATA_REQUEST });
+    }
+  };
+};
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dashboard);
 
 export default withStyles(dashboardStyle)(withConnect);

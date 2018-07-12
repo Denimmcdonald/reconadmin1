@@ -8,6 +8,22 @@ export const getFeatureCount = (data, category) => {
   }
 };
 
+export const getFeaturesSummary = (data) => {
+  const categories = [
+    'corruption',
+    'vandalism',
+    'drugUse',
+    'robbery',
+    'burglary'
+  ];
+  let summary = [];
+  categories.forEach((category) => {
+    const value = getFeatureCount(data, category);
+    summary.push({ name: category.toUpperCase(), value: value });
+  });
+  return summary;
+};
+
 // export const getFeatureCountLast24Hours = (data, category) => {
 //   if (category === 'all') {
 //     return data.features.length;

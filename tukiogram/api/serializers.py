@@ -6,13 +6,14 @@ from tukiogram.models import Tukio
 
 
 class UserSerializer(HyperlinkedModelSerializer):
-	class Meta:
-		model = User
-		fields = ('url', 'first_name', 'last_name', 'email')
+    class Meta:
+        model = User
+        fields = ('url', 'first_name', 'last_name', 'email')
 
 
 class TukioSerializer(GeoFeatureModelSerializer):
-	class Meta:
-		model = Tukio
-		geo_field = 'location_geom'
-		fields = ('user', 'desc', 'timestamp', 'category', 'location_name')
+
+    class Meta:
+        model = Tukio
+        geo_field = 'location_geom'
+        fields = ('user', 'desc', 'timestamp', 'category', 'location_name')

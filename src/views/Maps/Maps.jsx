@@ -42,30 +42,33 @@ class SamaritanMap extends React.Component {
   render() {
     const { mapReady } = this.state;
     const { data } = this.props;
-    const extents = bbox(data);
-    return (
-      <Map
-        // eslint-disable-next-line
-        style="mapbox://styles/mapbox/streets-v9"
-        containerStyle={{
-          height: '100vh'
-        }}
-        onStyleLoad={this.onStyleLoad}
-        onClick={this.onMapClick}
-        fitBounds={[[extents[0], extents[1]], [extents[2], extents[3]]]}
-        fitBoundsOptions={{ padding: 60 }}
-      >
-        {mapReady && <CorruptionLayer data={data} map={this.map} />}
-        {mapReady && <BurglaryLayer data={data} map={this.map} />}
-        {mapReady && <DrugUseLayer data={data} map={this.map} />}
-        {mapReady && <RobberyLayer data={data} map={this.map} />}
-        {mapReady && <VandalismLayer data={data} map={this.map} />}
-        <LayerSwitcher />
-        <Popup />
-        <TimeFilter />
-        <ZoomControl position="top-left" />
-      </Map>
-    );
+    if (data.features.length) {
+      const extents = bbox(data);
+      return (
+        <Map
+          // eslint-disable-next-line
+          style="mapbox://styles/mapbox/streets-v9"
+          containerStyle={{
+            height: '100vh'
+          }}
+          onStyleLoad={this.onStyleLoad}
+          onClick={this.onMapClick}
+          fitBounds={[[extents[0], extents[1]], [extents[2], extents[3]]]}
+          fitBoundsOptions={{ padding: 60 }}
+        >
+          {mapReady && <CorruptionLayer data={data} map={this.map} />}
+          {mapReady && <BurglaryLayer data={data} map={this.map} />}
+          {mapReady && <DrugUseLayer data={data} map={this.map} />}
+          {mapReady && <RobberyLayer data={data} map={this.map} />}
+          {mapReady && <VandalismLayer data={data} map={this.map} />}
+          <LayerSwitcher />
+          <Popup />
+          <TimeFilter />
+          <ZoomControl position="top-left" />
+        </Map>
+      );
+    }
+    return null;
   }
 }
 

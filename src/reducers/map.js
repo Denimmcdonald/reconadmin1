@@ -9,7 +9,7 @@ import {
 import data from '../data';
 
 const defaultState = {
-  data: { ...data },
+  data: { type: 'FeatureCollection', features: [] },
   layers: {
     corruption: true,
     burglary: true,
