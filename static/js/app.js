@@ -69,7 +69,7 @@ var tukios = L.markerClusterGroup({
 
 $.ajax({
     methods: "GET",
-    url: '/api/tukios',//our api endpoint
+    url: '/api/tukios/',//our api endpoint
     success: function (data) {
         tukio_layer.addData(data);
 
