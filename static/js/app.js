@@ -94,8 +94,9 @@ L.control.locate({
     iconLoading: "glyphicon gly phicon-refresh glyphicon-spin",
     markerStyle: {
         stroke: true,
-        color: '#2C2D29',
-        weight: 2
+        color: '#090909',
+        weight: 2,
+        radius:20
     },
     keepCurrentZoomLevel: true,
     returnToPrevBounds: true,

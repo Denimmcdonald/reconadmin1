@@ -13,5 +13,14 @@ class TukioAdmin(LeafletGeoAdmin):
 		'DEFAULT_ZOOM': 16,
 	}
 
+class TukioAdmin(admin.ModelAdmin):
+	list_display = ["category", "user", "timestamp"]
+ 	list_filter = ["category", "timestamp"]
+	search_fields = ["category"]
+ 
+class Meta:
+	model = Tukio
+
+#class TukioAdmin
 
 admin.site.register(Tukio, TukioAdmin)

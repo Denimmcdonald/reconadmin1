@@ -19,6 +19,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 	is_admin = models.BooleanField(default=False)
 	avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
 	is_verified = models.BooleanField(default=False)
+	#timestamp as per coding4enterpreneurs
+	#timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
+	#category = models.CharField(max_length=30)
 	
 	objects = UserManager()
 	USERNAME_FIELD = 'email'

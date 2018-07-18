@@ -45,6 +45,12 @@ import dashboardStyle from 'assets/jss/material-dashboard-react/views/dashboardS
 import { getFeatureCount, getFeaturesSummary } from '../../utils';
 import { DATA_REQUEST } from '../../constants/actionTypes';
 
+import robbery from './robberyicon.png';
+import vandalism from './vandalismicon.png';
+import burglary from './burglaryicon.png';
+import drugUse from './druguseicon.png';
+import corruption from './corruptionicon.png';
+
 class Dashboard extends React.Component {
   state = {
     value: 0
@@ -68,17 +74,15 @@ class Dashboard extends React.Component {
     return (
       <div>
         <Grid container>
+         
           <GridItem xs={12} sm={6} md={3}>
             <Card>
-              <CardHeader color="warning" stats icon>
-                <CardIcon color="warning">
-                  <AlertNew />
-                </CardIcon>
+              
+              <CardIcon color="info"><img width={60} height={60} src={robbery} /></CardIcon>   
                 <p className={classes.cardCategory}>Robbery </p>
                 <h3 className={classes.cardTitle}>
                   {getFeatureCount(data, 'robbery')}
                 </h3>
-              </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
                   <DateRange />
@@ -89,17 +93,16 @@ class Dashboard extends React.Component {
               </CardFooter>
             </Card>
           </GridItem>
+          
+
           <GridItem xs={12} sm={6} md={3}>
             <Card>
-              <CardHeader color="danger" stats icon>
-                <CardIcon color="danger">
-                  <AlertNew />
-                </CardIcon>
-                <p className={classes.cardCategory}>Vandalistn</p>
+              
+                <CardIcon color="info"><img width={60} height={60} src={vandalism} /></CardIcon> 
+                <p className={classes.cardCategory}>Vandalism</p>
                 <h3 className={classes.cardTitle}>
                   {getFeatureCount(data, 'vandalism')}
                 </h3>
-              </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
                   <DateRange />
@@ -108,17 +111,16 @@ class Dashboard extends React.Component {
               </CardFooter>
             </Card>
           </GridItem>
+          
+
           <GridItem xs={12} sm={6} md={3}>
             <Card>
-              <CardHeader color="danger" stats icon>
-                <CardIcon color="danger">
-                  <AlertNew />
-                </CardIcon>
+              
+                <CardIcon color="info"><img width={60} height={60} src={burglary} /></CardIcon> 
                 <p className={classes.cardCategory}>Burglary</p>
                 <h3 className={classes.cardTitle}>
                   {getFeatureCount(data, 'burglary')}
                 </h3>
-              </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
                   <DateRange /> Burglary Cases
@@ -126,17 +128,16 @@ class Dashboard extends React.Component {
               </CardFooter>
             </Card>
           </GridItem>
+         
+
           <GridItem xs={12} sm={6} md={3}>
             <Card>
-              <CardHeader color="info" stats icon>
-                <CardIcon color="danger">
-                  <AlertNew />
-                </CardIcon>
+              
+              <CardIcon color="info"><img width={60} height={60} src={drugUse} /></CardIcon> 
                 <p className={classes.cardCategory}>Drug Use </p>
                 <h3 className={classes.cardTitle}>
                   {getFeatureCount(data, 'drugUse')}
                 </h3>
-              </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
                   <DateRange />
@@ -145,17 +146,16 @@ class Dashboard extends React.Component {
               </CardFooter>
             </Card>
           </GridItem>
+          
+
           <GridItem xs={12} sm={6} md={3}>
             <Card>
-              <CardHeader color="info" stats icon>
-                <CardIcon color="danger">
-                  <AlertNew />
-                </CardIcon>
+              
+              <CardIcon color="info"><img width={60} height={60} src={corruption} /></CardIcon> 
                 <p className={classes.cardCategory}>Corruption </p>
                 <h3 className={classes.cardTitle}>
                   {getFeatureCount(data, 'corruption')}
                 </h3>
-              </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
                   <DateRange />
@@ -165,6 +165,8 @@ class Dashboard extends React.Component {
             </Card>
           </GridItem>
         </Grid>
+       
+
         <Grid container>
           <GridItem xs={12} sm={12} md={4}>
             <Card chart>
@@ -190,6 +192,8 @@ class Dashboard extends React.Component {
               </CardFooter>
             </Card>
           </GridItem>
+         
+
           <GridItem xs={12} sm={12} md={4}>
             <Card chart>
               <CardHeader>
@@ -206,6 +210,8 @@ class Dashboard extends React.Component {
               </CardFooter>
             </Card>
           </GridItem>
+         
+
           <GridItem xs={12} sm={12} md={4}>
             <Card chart>
               <CardHeader color="danger">

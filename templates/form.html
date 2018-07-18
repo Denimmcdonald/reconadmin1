@@ -37,35 +37,34 @@
                         <!-- Text input-->
                         <div class="form-group">
                             {{ form.non_field_errors }}
-                            <label class="col-md-4 control-label" for="id_first_name">Your Name</label>
+                            <label class="col-md-4 control-label" for="id_first_name">Your ID/Passport number</label>
                             <div class="col-md-4">
-                                <input id="id_first_name" name="first_name" placeholder="Your First Name"
+                                <input id="id_first_name" name="first_name" placeholder="Your ID/Passport number"
                                        class="form-control input-md" maxlength="300" type="text" required>
                             </div>
                         </div>
 
-                       <!-- Text input(remember to comment this line when you remove larger comment section)
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="id_last_name">Last Name</label>
+                            <label class="col-md-4 control-label" for="id_last_name">Your phone number</label>
                             <div class="col-md-4">
-                                <input id="id_last_name" name="last_name" placeholder="Your Last Name"
+                                <input id="id_last_name" name="last_name" placeholder="Your phone number"
                                        class="form-control input-md" maxlength="30" type="text" required>
                             </div>
-                        </div>-->
+                        </div>
                         <!-- Text input-->
                         <div class="form-group">
 
 
-                            <label class="col-md-4 control-label" for="id_email">Passport or phone number</label>
+                            <label class="col-md-4 control-label" for="id_email"> Your email</label>
                             <div class="col-md-4">
-                                <input id="id_email" name="email" placeholder="Your ID or Passport number"
+                                <input id="id_email" name="email" placeholder="Your email"
                                        class="form-control input-md" type="email" required>
                                 <span class="help-block">  {{ form.email.errors }} </span>
                             </div>
                         </div>
 
                         <!-- Text input-->
-                        <!--<div class="form-group">
+                        <div class="form-group">
 
                             <label class="col-md-4 control-label" for="id_email2">Confirm Email</label>
 
@@ -74,11 +73,11 @@
                                        class="form-control input-md" type="email" required>
                                 <span class="help-block">  {{ form.email2.errors }} </span>
                             </div>
-                        </div>-->
+                        </div>
 
                         <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="id_password">Password(<small>your ID or Passport Number.</small>)</label>
+                            <label class="col-md-4 control-label" for="id_password">Password(</label>
                             <div class="col-md-4">
                                 <input id="id_password" name="password" placeholder="Password"
                                        class="form-control input-md" type="password" required>
