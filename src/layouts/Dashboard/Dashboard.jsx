@@ -11,7 +11,8 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Header from 'components/Header/Header.jsx';
 import Footer from 'components/Footer/Footer.jsx';
 import Sidebar from 'components/Sidebar/Sidebar.jsx';
-
+import Button from 'components/CustomButtons/Button.jsx';
+import DownloadIcon from '@material-ui/icons/CloudDownload';
 import dashboardRoutes from 'routes/dashboard.jsx';
 
 import dashboardStyle from 'assets/jss/material-dashboard-react/layouts/dashboardStyle.jsx';
@@ -77,9 +78,16 @@ class App extends React.Component {
             handleDrawerToggle={this.handleDrawerToggle}
             {...rest}
           />
+
           {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
           {this.getRoute() ? (
             <div className={classes.content}>
+              <div style={{ textAlign: 'right', paddingRight: 30 }}>
+                <Button color="success">
+                  <DownloadIcon />
+                  Download
+                </Button>
+              </div>
               <div className={classes.container}>{switchRoutes}</div>
             </div>
           ) : (
